@@ -1,0 +1,133 @@
+/* ================================================
+   HarmonyFit CRM — сторінка входу менеджера
+   ================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-base);
+  background: var(--bg-body);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-wrap {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.login-brand-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--text-primary);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-brand-icon svg {
+  width: 22px;
+  height: 22px;
+  color: #fff;
+}
+
+.login-brand-name {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.login-brand-name span {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.login-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  padding: 36px;
+}
+
+.login-card h1 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+}
+
+.login-card .subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin: 0 0 28px;
+}
+
+.login-card .form-group {
+  margin-bottom: 16px;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  display: flex;
+  pointer-events: none;
+}
+
+.input-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.login-card .form-control {
+  padding-left: 38px;
+}
+
+.field-error {
+  font-size: var(--font-size-xs);
+  color: #DC2626;
+  margin-top: 5px;
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: 8px;
+  justify-content: center;
+  padding: 11px;
+  font-size: var(--font-size-base);
+}
+
+.login-alert {
+  padding: 11px 14px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  margin-bottom: 16px;
+  background: var(--status-expired-bg);
+  color: var(--status-expired-text);
+  border: 1px solid #FECACA;
+}

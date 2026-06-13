@@ -1,0 +1,146 @@
+/* ================================================
+   HarmonyFit CRM — сторінка абонементів
+   ================================================ */
+
+.modal-sub-type {
+  max-width: 480px;
+}
+
+/* ── Рядок статистики ─────────────────────────── */
+.sub-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* ── Сітка карток ─────────────────────────────── */
+.sub-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* ── Картка типу абонемента ───────────────────── */
+.sub-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.sub-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.sub-card--editable {
+  cursor: pointer;
+}
+
+.sub-card-accent {
+  height: 4px;
+  background: var(--color-brand);
+  flex-shrink: 0;
+}
+
+.sub-card-body {
+  padding: 20px;
+  flex: 1;
+}
+
+.sub-card-name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.sub-card-visits {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0 0 16px;
+}
+
+.sub-card-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.sub-card-price span {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.sub-card-meta {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.sub-card-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.sub-card-meta-item svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.sub-card-desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.sub-card-footer {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-body);
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* ── Порожній стан ────────────────────────────── */
+.sub-card-empty {
+  grid-column: 1 / -1;
+  border: 2px dashed var(--border-color);
+  box-shadow: none;
+  background: transparent;
+}
+
+.sub-card-empty:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+/* ── Кольорові смуги карток (приглушена палітра) ─ */
+.sub-card:nth-child(4n+1) .sub-card-accent { background: #1A1D23; }
+.sub-card:nth-child(4n+2) .sub-card-accent { background: #4B5563; }
+.sub-card:nth-child(4n+3) .sub-card-accent { background: #9CA3AF; }
+.sub-card:nth-child(4n+4) .sub-card-accent { background: #6B7280; }
+
+@media (max-width: 768px) {
+  .sub-stats-row {
+    grid-template-columns: 1fr;
+  }
+  .sub-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

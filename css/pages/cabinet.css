@@ -1,0 +1,542 @@
+/* ================================================
+   HarmonyFit — особистий кабінет клієнта
+   ================================================ */
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.hidden { display: none !important; }
+
+.cabinet-main {
+    padding-top: 24px;
+    padding-bottom: 64px;
+}
+
+.cabinet-page-header {
+    margin-bottom: 28px;
+}
+
+.cabinet-page-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1C1412;
+    margin: 0 0 8px;
+}
+
+.cabinet-page-subtitle {
+    font-size: 16px;
+    color: #7A6B65;
+    margin: 0;
+}
+
+/* ── Картка профілю ───────────────────────────── */
+.cabinet-profile-card {
+    margin-bottom: 28px;
+}
+
+.cabinet-profile-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.cabinet-profile-top .cabinet-card-title {
+    margin: 0;
+}
+
+.profile-edit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1.5px solid #EAEAEA;
+    border-radius: 9999px;
+    background: #fff;
+    color: #7A6B65;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.profile-edit-btn:hover {
+    border-color: #E8704A;
+    color: #E8704A;
+    background: rgba(232, 112, 74, 0.06);
+}
+
+.profile-edit-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.profile-view-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+@media (min-width: 640px) {
+    .profile-view-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.profile-view-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-view-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #7A6B65;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.profile-view-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1C1412;
+    word-break: break-word;
+}
+
+.profile-edit-form.hidden {
+    display: none;
+}
+
+.profile-edit-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+@media (min-width: 640px) {
+    .profile-edit-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.profile-field-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1C1412;
+}
+
+.profile-field {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #EAEAEA;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #1C1412;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.profile-field:focus {
+    outline: none;
+    border-color: #E8704A;
+    box-shadow: 0 0 0 3px rgba(232, 112, 74, 0.15);
+}
+.profile-field.is-invalid {
+    border-color: #D4A89A;
+}
+
+.profile-edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.cabinet-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cabinet-user-name {
+    display: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1C1412;
+}
+@media (min-width: 640px) {
+    .cabinet-user-name { display: inline; }
+}
+
+.cabinet-nav-actions .nav-auth-link {
+    display: inline-flex;
+    padding: 8px 24px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ── Сітка огляду ─────────────────────────────── */
+.cabinet-overview {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+@media (min-width: 1024px) {
+    .cabinet-overview {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.cabinet-card {
+    background: #fff;
+    border-radius: 32px;
+    border: 1px solid #F5F5F5;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+}
+
+.cabinet-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1C1412;
+    margin: 0 0 16px;
+}
+
+.cabinet-empty {
+    font-size: 14px;
+    color: #7A6B65;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ── Абонемент ────────────────────────────────── */
+.sub-status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+.sub-status-active {
+    background: #ECFDF5;
+    color: #059669;
+}
+.sub-status-expiring {
+    background: #FFFBEB;
+    color: #D97706;
+}
+.sub-status-expired {
+    background: #FEF2F2;
+    color: #DC2626;
+}
+.sub-status-none {
+    background: #F3F4F6;
+    color: #6B7280;
+}
+
+.sub-details {
+    display: grid;
+    gap: 12px;
+}
+
+.sub-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.sub-detail-label {
+    color: #7A6B65;
+}
+
+.sub-detail-value {
+    font-weight: 600;
+    color: #1C1412;
+    text-align: right;
+}
+
+/* ── Майбутні записи ──────────────────────────── */
+.booking-upcoming-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 4px;
+    margin-right: -4px;
+    scrollbar-gutter: stable;
+}
+
+.booking-upcoming-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.booking-upcoming-list::-webkit-scrollbar-thumb {
+    background: #D4D4D4;
+    border-radius: 9999px;
+}
+
+.booking-upcoming-list::-webkit-scrollbar-thumb:hover {
+    background: #A3A3A3;
+}
+
+.booking-upcoming-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: #FAFAFA;
+    border: 1px solid #F5F5F5;
+}
+
+.booking-upcoming-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1C1412;
+}
+
+.booking-upcoming-meta {
+    font-size: 13px;
+    color: #7A6B65;
+}
+
+.booking-upcoming-cancel {
+    align-self: flex-start;
+    margin-top: 6px;
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: #E8704A;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.booking-upcoming-cancel:hover { color: #D05830; }
+
+/* ── Секція розкладу ──────────────────────────── */
+.cabinet-schedule-section {
+    padding: 28px 24px;
+}
+
+.cabinet-schedule-header {
+    margin-bottom: 20px;
+}
+
+.week-tabs {
+    margin-bottom: 12px;
+}
+
+.schedule-class-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 20px 0;
+    border-bottom: 1px solid #EAEAEA;
+}
+.schedule-class-row:last-child { border-bottom: none; }
+
+@media (min-width: 768px) {
+    .schedule-class-row {
+        grid-template-columns: minmax(110px, 160px) 130px minmax(120px, 1fr) minmax(130px, 170px) auto;
+        align-items: center;
+        column-gap: 20px;
+        row-gap: 0;
+    }
+}
+
+.schedule-class-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1C1412;
+}
+
+.schedule-class-time {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1C1412;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.schedule-class-trainer {
+    font-size: 14px;
+    color: #7A6B65;
+}
+
+.schedule-class-spots {
+    font-size: 13px;
+    color: #64748B;
+    white-space: nowrap;
+}
+
+.schedule-class-actions {
+    justify-self: start;
+}
+@media (min-width: 768px) {
+    .schedule-class-actions {
+        justify-self: end;
+    }
+}
+
+/* ── Застарілі обгортки (залишено для сумісності) ─ */
+.schedule-class-info { display: contents; }
+.schedule-class-meta { display: none; }
+
+.schedule-class-row .schedule-class-name,
+.schedule-class-row .schedule-class-time,
+.schedule-class-row .schedule-class-trainer,
+.schedule-class-row .schedule-class-spots,
+.schedule-class-row .schedule-class-actions {
+    min-width: 0;
+}
+
+.btn-book {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-book-primary {
+    background: #E8704A;
+    color: #fff;
+}
+.btn-book-primary:hover:not(:disabled) {
+    background: #D05830;
+    transform: scale(1.03);
+}
+
+.btn-book-secondary {
+    background: #E8EDF8;
+    color: #1C1412;
+}
+.btn-book-secondary:hover:not(:disabled) {
+    background: #7B8FC8;
+    color: #fff;
+}
+
+.btn-book:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.schedule-loading {
+    padding: 32px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #7A6B65;
+}
+
+/* ── Сповіщення (toast) ───────────────────────── */
+.cabinet-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 12px 20px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: #1C1412;
+    box-shadow: 0 8px 28px rgba(28, 20, 18, 0.2);
+    max-width: calc(100% - 32px);
+    text-align: center;
+}
+.cabinet-toast.toast-success { background: #059669; }
+.cabinet-toast.toast-error { background: #DC2626; }
+
+/* ── Кабінет тренера ──────────────────────────── */
+.profile-view-item--full {
+    grid-column: 1 / -1;
+}
+
+.profile-directions-value {
+    font-weight: 600;
+    color: #7A6B65;
+}
+
+.trainer-class-block {
+    border-bottom: 1px solid #EAEAEA;
+}
+.trainer-class-block:last-child {
+    border-bottom: none;
+}
+
+.trainer-class-row {
+    border-bottom: none;
+}
+
+.trainer-toggle-btn {
+    white-space: nowrap;
+}
+
+.trainer-participants-panel {
+    margin: 0 0 16px;
+    padding: 16px 18px;
+    border-radius: 16px;
+    background: #FAFAFA;
+    border: 1px solid #F5F5F5;
+}
+
+.trainer-participants-heading {
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1C1412;
+}
+
+.trainer-participants-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.trainer-participant-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 16px;
+    font-size: 14px;
+}
+
+.trainer-participant-name {
+    font-weight: 600;
+    color: #1C1412;
+}
+
+.trainer-participant-phone {
+    font-size: 13px;
+    color: #7A6B65;
+    font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../icons/favicon-landing.svg" type="image/svg+xml">
+    <title>Кабінет тренера — Harmony fit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/pages/landing.css">
+    <link rel="stylesheet" href="../css/pages/cabinet.css">
+</head>
+<body>
+
+    <header class="glass-nav site-header">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                Harmony <span class="nav-logo-accent">fit</span>
+            </a>
+            <div class="cabinet-nav-actions">
+                <span class="cabinet-user-name" id="cabinetUserName"></span>
+                <button type="button" class="btn-auth nav-auth-link" id="logoutBtn">Вийти</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="cabinet-main container">
+
+        <div class="cabinet-page-header">
+            <h1 class="cabinet-page-title">Кабінет тренера</h1>
+            <p class="cabinet-page-subtitle" id="cabinetGreeting">Завантаження...</p>
+        </div>
+
+        <section class="cabinet-card cabinet-profile-card" id="profileSection" aria-labelledby="profileTitle">
+            <div class="cabinet-profile-top">
+                <h2 class="cabinet-card-title" id="profileTitle">Мої дані</h2>
+                <button type="button" class="profile-edit-btn" id="profileEditBtn" aria-label="Редагувати дані">
+                    <svg class="profile-edit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M12 20h9"/>
+                        <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                    </svg>
+                    <span>Редагувати</span>
+                </button>
+            </div>
+
+            <div id="profileView" class="profile-view-grid"></div>
+
+            <form id="profileEditForm" class="profile-edit-form hidden" novalidate>
+                <div class="profile-edit-grid">
+                    <div class="field-group">
+                        <label for="profileFirstName" class="profile-field-label">Ім'я</label>
+                        <input id="profileFirstName" type="text" class="profile-field" autocomplete="given-name">
+                    </div>
+                    <div class="field-group">
+                        <label for="profileLastName" class="profile-field-label">Прізвище</label>
+                        <input id="profileLastName" type="text" class="profile-field" autocomplete="family-name">
+                    </div>
+                    <div class="field-group">
+                        <label for="profileEmail" class="profile-field-label">Email</label>
+                        <input id="profileEmail" type="email" class="profile-field" autocomplete="email">
+                    </div>
+                    <div class="field-group">
+                        <label for="profilePhone" class="profile-field-label">Телефон</label>
+                        <input id="profilePhone" type="tel" class="profile-field" autocomplete="tel" placeholder="+380 XX XXX XX XX">
+                    </div>
+                </div>
+                <div class="profile-edit-actions">
+                    <button type="button" class="btn-book btn-book-secondary" id="profileCancelBtn">Скасувати</button>
+                    <button type="submit" class="btn-book btn-book-primary" id="profileSaveBtn">Зберегти</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="cabinet-card cabinet-schedule-section" aria-labelledby="scheduleTitle">
+            <div class="cabinet-schedule-header">
+                <h2 class="cabinet-card-title" id="scheduleTitle">Мій розклад</h2>
+            </div>
+
+            <div class="week-tabs schedule-tabs schedule-tabs-container" role="tablist" aria-label="Тиждень">
+                <button type="button" role="tab" class="schedule-day-tab" data-week="0" aria-selected="true">Цей тиждень</button>
+                <button type="button" role="tab" class="schedule-day-tab" data-week="1" aria-selected="false">Наступний тиждень</button>
+            </div>
+
+            <div
+                id="scheduleDayTabs"
+                class="schedule-tabs schedule-tabs-container"
+                role="tablist"
+                aria-label="Дні тижня"
+            ></div>
+
+            <div id="scheduleClassList" class="schedule-list">
+                <p class="schedule-loading">Завантаження розкладу...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="cabinetToast" class="cabinet-toast hidden" role="status" aria-live="polite"></div>
+
+    <script type="module" src="../js/trainer-cabinet.js"></script>
+</body>
+</html>

@@ -1,0 +1,639 @@
+/* ================================================
+   HarmonyFit CRM — сторінка розкладу
+   ================================================ */
+
+/* ── Модалка створення / редагування заняття ─── */
+.modal-class {
+  max-width: 520px;
+}
+
+.form-hint {
+  margin: 4px 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+/* ── Перевизначення FullCalendar ──────────────── */
+.fc {
+  font-family: var(--font-base) !important;
+  font-size: var(--font-size-sm);
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 16px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fc .fc-toolbar-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Кнопки панелі календаря ──────────────────── */
+.fc .fc-button {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  border-radius: var(--radius-md) !important;
+  font-family: var(--font-base) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: 600 !important;
+  padding: 6px 14px !important;
+  box-shadow: none !important;
+  transition: background var(--transition-fast), color var(--transition-fast) !important;
+}
+
+.fc .fc-button:hover {
+  background: var(--bg-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+.fc .fc-button-primary:not(.fc-button-active):not(:disabled):hover {
+  background: var(--bg-hover) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.fc .fc-button-active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  background: var(--color-brand) !important;
+  border-color: var(--color-brand) !important;
+  color: #fff !important;
+}
+
+/* ── Заголовки колонок (дні тижня) ────────────── */
+.fc .fc-col-header-cell-cushion {
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: .05em;
+  text-decoration: none;
+  padding: 8px 0;
+}
+
+/* ── Підсвітка сьогоднішнього дня ─────────────── */
+.fc .fc-day-today {
+  background: #FAFBFC !important;
+}
+
+.fc .fc-timegrid-col.fc-day-today,
+.fc .fc-daygrid-day.fc-day-today {
+  background: #F8F9FB !important;
+}
+
+.fc .fc-day-today .fc-col-header-cell-cushion {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* ── Картки занять у календарі ────────────────── */
+.fc .fc-timegrid-event,
+.fc .fc-v-event {
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(17, 20, 28, 0.08) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  margin-right: 0 !important;
+}
+
+/* Повна ширина колонки — без зсуву вбік для послідовних занять */
+.fc .fc-timegrid-event-harness-inset .fc-timegrid-event,
+.fc .fc-timegrid-event-harness:not(.fc-timegrid-event-harness-inset) .fc-timegrid-event {
+  margin-left: 2px !important;
+  margin-right: 2px !important;
+}
+
+.fc .fc-timegrid-event .fc-event-main,
+.fc .fc-v-event .fc-event-main {
+  padding: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+.fc .fc-event.fc-class-event {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+}
+
+.fc .fc-event.fc-class-event:hover {
+  filter: none !important;
+  box-shadow: 0 4px 12px rgba(17, 20, 28, 0.12) !important;
+}
+
+.fc .fc-event.fc-class-event--cancelled {
+  opacity: 0.72;
+}
+
+.fc .fc-event.fc-class-event--completed {
+  opacity: 0.92;
+}
+
+.fc .fc-event .fc-event-time,
+.fc .fc-event .fc-event-title {
+  display: none !important;
+}
+
+/* ── Внутрішня розкладка картки: контент + статус ─ */
+.fc-class-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 10px 10px 9px;
+  box-sizing: border-box;
+  background: var(--card-bg);
+  color: var(--card-text);
+  border-radius: 10px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.fc-class-card__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: flex-start;
+}
+
+.fc-class-card__title {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--card-text);
+}
+
+.fc-class-card__time {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--card-text);
+  opacity: 0.9;
+}
+
+.fc-class-card__meta-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--card-text);
+  opacity: 0.9;
+  min-width: 0;
+}
+
+.fc-class-card__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  color: var(--card-text);
+  opacity: 0.85;
+}
+
+.fc-class-card__icon-svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.fc-class-card__meta-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.fc-class-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px 5px 7px;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary);
+  box-shadow: 0 1px 4px rgba(17, 20, 28, 0.1);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.fc-class-card__footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.fc-class-status-pill__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fc-class-status-pill--scheduled .fc-class-status-pill__icon {
+  background: var(--status-scheduled-bg);
+  color: var(--status-scheduled-text);
+}
+
+.fc-class-status-pill--completed .fc-class-status-pill__icon {
+  background: var(--status-completed-bg);
+  color: var(--status-completed-text);
+}
+
+.fc-class-status-pill--cancelled .fc-class-status-pill__icon {
+  background: #FFEBEE;
+  color: #E53935;
+}
+
+/* ── Сітка часу: 70px/30хв ≈ 140px на годину ─── */
+.fc .fc-timegrid-slot {
+  height: 70px;
+}
+
+.fc .fc-timegrid-slot-label-cushion {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.fc .fc-scrollgrid {
+  border-color: var(--border-color) !important;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.fc td, .fc th {
+  border-color: var(--border-light) !important;
+}
+
+/* ── Метадані деталей заняття ─────────────────── */
+.detail-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  background: var(--bg-body);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.detail-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detail-meta-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.detail-meta-value {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ── Рядок запису клієнта ─────────────────────── */
+.booking-row {
+  display: grid;
+  grid-template-columns: 1fr auto 32px;
+  align-items: center;
+  column-gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.booking-row:last-child {
+  border-bottom: none;
+}
+
+.booking-name {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+  min-width: 0;
+}
+
+.booking-status {
+  justify-self: start;
+}
+
+.booking-action {
+  display: flex;
+  justify-content: center;
+  width: 32px;
+}
+
+/* ── Модалка запису клієнта на заняття ────────── */
+.modal-booking-client {
+  max-width: 440px;
+}
+
+.booking-client-search {
+  margin-bottom: 12px;
+}
+
+.booking-client-list {
+  max-height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 -4px;
+  padding: 0 4px;
+}
+
+.booking-client-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-base);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.booking-client-item:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-color);
+}
+
+.booking-client-item.is-selected {
+  background: rgba(232, 112, 74, 0.1);
+  border-color: var(--color-brand);
+}
+
+.booking-client-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.booking-client-name {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.booking-client-meta {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.booking-client-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  padding: 24px 12px;
+  margin: 0;
+}
+
+/* ── Заголовок календаря — клік для вибору дати ─ */
+.fc-toolbar-title--clickable {
+  cursor: pointer;
+  user-select: none;
+  transition: opacity var(--transition-fast);
+}
+.fc-toolbar-title--clickable:hover { opacity: .7; }
+.fc-toolbar-title--clickable::after {
+  content: '';
+  display: inline-block;
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  margin-left: 7px;
+  vertical-align: middle;
+  opacity: .4;
+}
+
+/* ── Стилі календаря вибору дати ──────────────── */
+.datepicker { z-index: 9999 !important; font-family: var(--font-base); }
+.datepicker-picker {
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-lg) !important;
+  background: var(--bg-card) !important;
+  overflow: hidden;
+  min-width: 280px;
+}
+.datepicker-header { border-bottom: 1px solid var(--border-light); padding: 4px 8px; }
+.datepicker-controls .button,
+.datepicker-controls .btn {
+  font-family: var(--font-base) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 6px 10px !important;
+  box-shadow: none !important;
+  transition: background var(--transition-fast) !important;
+}
+.datepicker-controls .button:hover,
+.datepicker-controls .btn:hover { background: var(--bg-hover) !important; }
+.datepicker-view-switch { flex: 1 !important; }
+.datepicker-main { padding: 4px 8px 8px; }
+.datepicker-cell {
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-base);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  transition: background var(--transition-fast);
+}
+.datepicker-cell:not(.disabled):not(.selected):hover {
+  background: var(--bg-hover) !important;
+  color: var(--text-primary) !important;
+}
+.datepicker-cell.selected,
+.datepicker-cell.selected:hover {
+  background: var(--color-brand) !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+.datepicker-cell.today:not(.selected) {
+  color: var(--color-brand) !important;
+  font-weight: 700;
+  background: var(--color-brand-light) !important;
+}
+.datepicker-cell.prev, .datepicker-cell.next { color: var(--text-muted) !important; }
+.datepicker-cell.disabled { color: var(--text-muted) !important; opacity: .45; }
+.days-of-week .dow {
+  font-size: var(--font-size-xs) !important;
+  font-weight: 600 !important;
+  color: var(--text-muted) !important;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.datepicker-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 6px 8px;
+}
+.datepicker-footer .button,
+.datepicker-footer .btn {
+  font-family: var(--font-base) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: 600 !important;
+  width: 100%;
+  background: var(--color-brand) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 7px 0 !important;
+  box-shadow: none !important;
+  transition: background var(--transition-fast) !important;
+}
+.datepicker-footer .button:hover,
+.datepicker-footer .btn:hover { background: var(--color-brand-hover) !important; }
+
+/* ── Панель фільтрів ──────────────────────────── */
+.cal-filter-panel {
+  position: absolute;
+  z-index: 1050;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 264px;
+  overflow: hidden;
+}
+.cal-filter-panel.hidden { display: none; }
+.cal-filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px 10px;
+  border-bottom: 1px solid var(--border-light);
+}
+.cal-filter-title {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.cal-filter-reset {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+.cal-filter-reset:hover { color: var(--text-primary); background: var(--bg-hover); }
+.cal-filter-body { max-height: 380px; overflow-y: auto; padding: 4px 0; }
+.cal-filter-section { padding: 10px 14px; }
+.cal-filter-section + .cal-filter-section { border-top: 1px solid var(--border-light); }
+.cal-filter-label {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 6px;
+}
+.cal-filter-options { display: flex; flex-direction: column; gap: 1px; }
+.cal-filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+  user-select: none;
+  margin: 0;
+}
+.cal-filter-option:hover { background: var(--bg-hover); }
+.cal-filter-option input[type="checkbox"] {
+  width: 15px; height: 15px;
+  accent-color: var(--color-brand);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.cal-filter-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Кнопка фільтра (режим списку) ────────────── */
+#listFilterBtn {
+  border-radius: var(--radius-md);
+  padding: 6px 14px;
+  color: var(--text-secondary);
+}
+#listFilterBtn:hover { color: var(--text-primary); }
+
+/* ── Іконка кнопки фільтра ────────────────────── */
+.fc-filterBtn-button::before {
+  content: '';
+  display: inline-block;
+  width: 13px; height: 13px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='3' y1='6' x2='21' y2='6'/%3E%3Cline x1='8' y1='12' x2='16' y2='12'/%3E%3Cline x1='11' y1='18' x2='13' y2='18'/%3E%3C%2Fsvg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-top: -1px;
+}
+
+/* ── Активний стан фільтра ────────────────────── */
+.fc-filterBtn-button.has-filters,
+#listFilterBtn.has-filters {
+  background: var(--color-brand-light) !important;
+  border-color: var(--color-brand-border) !important;
+}
+.fc-filter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  background: var(--color-brand);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 4px;
+  margin-left: 5px;
+  vertical-align: middle;
+  line-height: 17px;
+}

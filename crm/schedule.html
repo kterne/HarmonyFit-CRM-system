@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../icons/favicon-crm.svg" type="image/svg+xml">
+  <title>Розклад — HarmonyFit CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- ── FullCalendar (календар) ─────────────────── -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+  <!-- ── Datepicker (вибір дати) ─────────────────── -->
+  <link href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker-bs5.min.css" rel="stylesheet">
+  <!-- ── Дизайн-система ──────────────────────────── -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages/schedule.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- ── Бічна панель ─────────────────────────────── -->
+  <aside class="sidebar">
+    <a href="#" class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+          <line x1="6" y1="1" x2="6" y2="4"/>
+          <line x1="10" y1="1" x2="10" y2="4"/>
+          <line x1="14" y1="1" x2="14" y2="4"/>
+        </svg>
+      </div>
+      <div class="sidebar-logo-text">
+        HarmonyFit
+        <span>CRM-система</span>
+      </div>
+    </a>
+
+    <ul class="sidebar-nav" id="sidebarNav">
+      <li>
+        <a href="schedule.html" class="active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Розклад
+        </a>
+      </li>
+      <li>
+        <a href="clients.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          Клієнти і тренери
+        </a>
+      </li>
+      <li>
+        <a href="subscriptions.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+            <line x1="1" y1="10" x2="23" y2="10"/>
+          </svg>
+          Абонементи
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user" id="sidebarUser">
+        <div class="sidebar-avatar" id="userInitials">МН</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="userName">Менеджер</div>
+          <div class="sidebar-user-role" id="userRole">Менеджер</div>
+        </div>
+        <button class="sidebar-logout" id="logoutBtn" title="Вийти">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Основний контент ─────────────────────────── -->
+  <main class="main-content">
+
+    <!-- ── Заголовок сторінки ──────────────────────── -->
+    <div class="page-header">
+      <nav class="breadcrumb-nav">
+        <span>CRM</span>
+        <span class="sep">›</span>
+        <span class="current">Розклад</span>
+      </nav>
+      <div class="page-title-row">
+        <h1 class="page-title">Розклад</h1>
+        <div class="page-actions">
+          <button class="btn btn-secondary" id="copyWeekBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            Скопіювати тиждень
+          </button>
+          <button type="button" class="btn btn-primary" id="addClassBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            Нове заняття
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Вкладки ─────────────────────────────────── -->
+      <div class="page-tabs">
+        <button class="tab-btn active" data-tab="week">Тиждень</button>
+        <button class="tab-btn" data-tab="list">Список</button>
+      </div>
+    </div>
+
+    <!-- ── Тіло сторінки ───────────────────────────── -->
+    <div class="page-body">
+
+      <!-- ── Вигляд тижня (календар) ─────────────────── -->
+      <div id="tab-week">
+        <div class="card">
+          <div class="card-body" style="padding: 16px;">
+            <div id="calendar"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Вигляд списку ───────────────────────────── -->
+      <div id="tab-list" class="hidden">
+        <div class="table-wrapper">
+          <div class="table-toolbar">
+            <div class="table-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <input type="text" id="listSearch" placeholder="Пошук занять...">
+            </div>
+            <button class="btn btn-secondary" id="listFilterBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="8" y1="12" x2="16" y2="12"/>
+                <line x1="11" y1="18" x2="13" y2="18"/>
+              </svg>
+              Фільтри
+            </button>
+          </div>
+          <table class="crm-table">
+            <thead>
+              <tr>
+                <th>Напрямок</th>
+                <th>Дата</th>
+                <th>Час</th>
+                <th>Тренер</th>
+                <th>Зал</th>
+                <th>Місця</th>
+                <th>Статус</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="classListBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /тіло сторінки -->
+  </main>
+</div><!-- /оболонка застосунку -->
+
+<!-- ── Модалка: створення / редагування заняття ─── -->
+<div class="modal-backdrop hidden" id="classModal" aria-hidden="true">
+  <div class="modal modal-class" role="dialog" aria-labelledby="classModalTitle">
+    <div class="modal-header">
+      <h2 class="modal-title" id="classModalTitle">Нове заняття</h2>
+      <button type="button" class="modal-close" id="classModalClose" aria-label="Закрити">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form id="classForm" novalidate>
+        <input type="hidden" id="classId">
+        <div class="form-group">
+          <label class="form-label" for="classDirection">Напрямок</label>
+          <select class="form-control" id="classDirection">
+            <option value="">Оберіть напрямок</option>
+          </select>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="classDate">Дата</label>
+            <input type="date" class="form-control" id="classDate">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="classTrainer">Тренер</label>
+            <select class="form-control" id="classTrainer">
+              <option value="">Оберіть тренера</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="classStart">Початок</label>
+            <input type="time" class="form-control" id="classStart">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="classEnd">Кінець</label>
+            <input type="time" class="form-control" id="classEnd">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="classRoom">Зал</label>
+            <select class="form-control" id="classRoom">
+              <option value="">Оберіть зал</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="classMax">Макс. учасників</label>
+            <input type="number" class="form-control" id="classMax" min="1" max="99" placeholder="15">
+            <p class="form-hint" id="classRoomCapacityHint" hidden></p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="classStatus">Статус</label>
+            <select class="form-control" id="classStatus">
+              <option value="scheduled">Заплановано</option>
+              <option value="completed">Завершено</option>
+              <option value="cancelled">Скасовано</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer modal-footer--edit" id="classModalFooter">
+      <div class="modal-footer-actions">
+        <button type="submit" form="classForm" class="btn btn-primary" id="classModalSave">Зберегти</button>
+        <button type="button" class="btn btn-secondary" id="classModalCancel">Скасувати</button>
+      </div>
+      <button type="button" class="btn btn-danger" id="classModalDelete" style="display:none;">Видалити</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Модалка: деталі заняття та записи ───────── -->
+<div class="modal-backdrop hidden" id="classDetailModal">
+  <div class="modal" style="max-width:540px;">
+    <div class="modal-header">
+      <h2 class="modal-title" id="detailTitle">Заняття</h2>
+      <button class="modal-close" id="detailModalClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div id="detailMeta" style="margin-bottom:16px;"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <span class="text-label">Учасники</span>
+        <button class="btn btn-secondary btn-sm" id="addBookingBtn">+ Записати клієнта</button>
+      </div>
+      <div id="bookingsList"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="detailEditBtn">Редагувати</button>
+      <button class="btn btn-danger" id="detailCancelBtn">Скасувати заняття</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Модалка: запис клієнта на заняття ───────── -->
+<div class="modal-backdrop hidden" id="bookingClientModal" aria-hidden="true">
+  <div class="modal modal-booking-client" role="dialog" aria-labelledby="bookingClientModalTitle">
+    <div class="modal-header">
+      <h2 class="modal-title" id="bookingClientModalTitle">Записати клієнта</h2>
+      <button type="button" class="modal-close" id="bookingClientModalClose" aria-label="Закрити">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="table-search booking-client-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="bookingClientSearch" placeholder="Пошук за ім'ям, email або телефоном..." autocomplete="off">
+      </div>
+      <div class="booking-client-list" id="bookingClientList" role="listbox" aria-label="Список клієнтів"></div>
+    </div>
+    <div class="modal-footer modal-footer--start">
+      <button type="button" class="btn btn-secondary" id="bookingClientModalCancel">Скасувати</button>
+      <button type="button" class="btn btn-primary" id="bookingClientModalSave" disabled>Зберегти</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Панель фільтрів ──────────────────────────── -->
+<div id="calFilterPanel" class="cal-filter-panel hidden">
+  <div class="cal-filter-header">
+    <span class="cal-filter-title">Фільтри</span>
+    <button class="cal-filter-reset" id="calFilterReset">Скинути все</button>
+  </div>
+  <div class="cal-filter-body">
+    <div class="cal-filter-section">
+      <div class="cal-filter-label">Напрямок</div>
+      <div class="cal-filter-options" id="calFilterDirections"></div>
+    </div>
+    <div class="cal-filter-section">
+      <div class="cal-filter-label">Тренер</div>
+      <div class="cal-filter-options" id="calFilterTrainers"></div>
+    </div>
+    <div class="cal-filter-section">
+      <div class="cal-filter-label">Статус</div>
+      <div class="cal-filter-options" id="calFilterStatuses">
+        <label class="cal-filter-option">
+          <input type="checkbox" data-filter="status" value="scheduled"> Заплановано
+        </label>
+        <label class="cal-filter-option">
+          <input type="checkbox" data-filter="status" value="completed"> Завершено
+        </label>
+        <label class="cal-filter-option">
+          <input type="checkbox" data-filter="status" value="cancelled"> Скасовано
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Контейнер сповіщень (toast) ──────────────── -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ── Приховане поле для datepicker календаря ──── -->
+<input type="text" id="calDatepickerProxy"
+  style="position:absolute;opacity:0;width:0;height:0;padding:0;border:0;overflow:hidden;pointer-events:none;"
+  aria-hidden="true" tabindex="-1" readonly>
+
+<!-- ── Скрипти ───────────────────────────────────── -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/locales/uk.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/locales/uk.js"></script>
+<script type="module" src="../js/schedule.js"></script>
+</body>
+</html>

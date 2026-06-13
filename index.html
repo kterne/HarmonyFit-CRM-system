@@ -1,0 +1,900 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/favicon-landing.svg" type="image/svg+xml">
+    <title>Harmony fit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/pages/landing.css">
+</head>
+<body>
+
+    <!-- ── Навігація ─────────────────────────────────── -->
+    <header class="glass-nav site-header">
+        <div class="container nav-inner">
+
+            <a href="#" class="nav-logo">
+                Harmony <span class="nav-logo-accent">fit</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Головна навігація">
+                <a href="#services" class="nav-link">Напрямки</a>
+                <a href="#schedule" class="nav-link">Розклад</a>
+                <a href="#trainers" class="nav-link">Тренери</a>
+                <a href="#pricing"  class="nav-link">Тарифи</a>
+                <a href="#reviews"  class="nav-link">Відгуки</a>
+            </nav>
+
+            <a href="cabinet/cabinet-login.html" class="btn-auth nav-auth-link">
+                Авторизація
+            </a>
+
+            <button
+                class="mobile-menu-btn"
+                id="mobile-menu-btn"
+                aria-label="Відкрити меню"
+                aria-expanded="false"
+            >
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+
+        <div id="mobile-nav-backdrop" class="mobile-nav-backdrop hidden" aria-hidden="true"></div>
+        <nav id="mobile-nav" class="mobile-nav hidden" aria-label="Мобільна навігація">
+            <a href="#services" class="mobile-nav-link">Напрямки</a>
+            <a href="#schedule" class="mobile-nav-link">Розклад</a>
+            <a href="#trainers" class="mobile-nav-link">Тренери</a>
+            <a href="#pricing"  class="mobile-nav-link">Тарифи</a>
+            <a href="#reviews"  class="mobile-nav-link">Відгуки</a>
+            <a href="cabinet/cabinet-login.html" class="btn-auth mobile-auth-link">
+                Авторизація
+            </a>
+        </nav>
+    </header>
+
+
+    <!-- ── Головний банер ──────────────────────────────── -->
+    <section class="container hero-section fade-in-up">
+
+        <div class="hero-content">
+            <span class="hero-badge"></span>
+
+            <h1 class="hero-title">
+                Тренування, які заряджають силою та впевненістю
+            </h1>
+
+            <p class="hero-description">
+                В студії ви знайдете не просто заняття, а підтримку, атмосферу та команду, з якою хочеться розвиватися — тілом і духом.
+            </p>
+
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-value">10+</div>
+                    <div class="stat-label">Напрямків</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">120+</div>
+                    <div class="stat-label">Тренувань на місяць</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">45+</div>
+                    <div class="stat-label">Років досвіду</div>
+                </div>
+            </div>
+
+            <a href="cabinet/cabinet-login.html" class="btn-primary hero-cta">
+                Записатися на пробне заняття
+            </a>
+        </div>
+
+        <div class="hero-image-wrapper">
+            <img src="photo/studio7.jpg" alt="Студія Harmony fit" loading="eager" width="800" height="1040" />
+        </div>
+    </section>
+
+
+    <!-- ── Переваги (пілюлі) ─────────────────────────── -->
+    <section class="container feature-pills fade-in-up">
+        <div class="pills-grid">
+
+            <div class="pill">
+                <div class="pill-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <p class="pill-text">Для тих, хто цінує гнучкість та комфорт у тренуваннях</p>
+            </div>
+
+            <div class="pill">
+                <div class="pill-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
+                    </svg>
+                </div>
+                <p class="pill-text">Для тих, хто тільки починає свій шлях у фітнесі</p>
+            </div>
+
+            <div class="pill">
+                <div class="pill-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                </div>
+                <p class="pill-text">Для тих, хто хоче стати сильнішим та впевненішим</p>
+            </div>
+
+            <div class="pill">
+                <div class="pill-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                </div>
+                <p class="pill-text">Для мам, які хочуть повернутися до свого тіла</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ── Чому обирають нас ─────────────────────────── -->
+    <section id="about" class="container about-section fade-in-up">
+
+        <div class="section-header">
+            <h2 class="section-title">Чому обирають нас</h2>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-photo">
+                <img
+                    src="photo/trainers.jpg"
+                    alt="Команда тренерів Harmony fit"
+                    loading="lazy"
+                    width="480"
+                    height="640"
+                />
+            </div>
+
+            <div class="about-card">
+                <div>
+                    <h3 class="about-card-title">Тренування для будь-якого рівня</h3>
+                    <p class="about-card-text">Всі тренування адаптовані під вік, рівень підготовки та фізичні особливості — ми поруч, щоб ви впевнено йшли до результату.</p>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <div>
+                    <h3 class="about-card-title">Професійні тренери</h3>
+                    <p class="about-card-text">Сертифіковані тренери з постійною практикою — ви тренуєтесь під надійним контролем професіоналів.</p>
+                </div>
+            </div>
+
+            <div class="about-card-accent">
+                <h3 class="about-card-accent-title">
+                    Завдяки нам, клієнти вирішили проблеми:
+                </h3>
+                <div class="accent-tags">
+                    <span class="accent-tag">Нестача мотивації</span>
+                    <span class="accent-tag">Стрес</span>
+                    <span class="accent-tag">Зайва вага</span>
+                    <span class="accent-tag">Відсутність результатів</span>
+                    <span class="accent-tag">Немає часу на себе</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ── Карусель послуг ───────────────────────────── -->
+    <section id="services" class="container services-section fade-in-up">
+
+        <div class="section-header-row">
+            <div>
+                <h2 class="section-title">Напрямки</h2>
+            </div>
+            <div class="carousel-controls">
+                <button
+                    id="carousel-prev"
+                    aria-label="Попередній слайд"
+                    class="carousel-btn carousel-btn-prev"
+                >
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <button
+                    id="carousel-next"
+                    aria-label="Наступний слайд"
+                    class="carousel-btn carousel-btn-next"
+                >
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="carousel-track" id="carousel-track">
+
+            <article class="carousel-card">
+                <div class="card-image">
+                    <img src="photo/pilates.jpg" alt="Пілатес" loading="lazy" width="640" height="416" />
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Пілатес</h3>
+                    <p class="card-text">
+                        Покращення фізичної форми, корекція постави, зміцнення м'язів та зняття стресу.
+                    </p>
+                    <div class="card-actions">
+                        <a href="cabinet/cabinet-login.html" class="btn-primary card-enroll-btn">Записатися</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="carousel-card">
+                <div class="card-image card-image-blue">
+                    <img src="photo/barre.jpg" alt="Barre" loading="lazy" width="640" height="416" />
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Barre</h3>
+                    <p class="card-text">
+                        Поєднання елементів балету з силовим тренінгом для грації, балансу та ідеальної постави.
+                    </p>
+                    <div class="card-actions">
+                        <a href="cabinet/cabinet-login.html" class="btn-primary card-enroll-btn">Записатися</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="carousel-card">
+                <div class="card-image">
+                    <img src="photo/stretching.jpg" alt="Stretching" loading="lazy" width="640" height="416" />
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Stretching</h3>
+                    <p class="card-text">
+                        Розтяжка м'язів, покращення мобільності суглобів та вправи для гарної постави.
+                    </p>
+                    <div class="card-actions">
+                        <a href="cabinet/cabinet-login.html" class="btn-primary card-enroll-btn">Записатися</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="carousel-card">
+                <div class="card-image card-image-blue">
+                    <img src="photo/yoga.jpg" alt="Йога" loading="lazy" width="640" height="416" />
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Йога</h3>
+                    <p class="card-text">
+                        Комплекс поз та медитацій для тонусу тіла, духовного розвитку та позбавлення від стресу.
+                    </p>
+                    <div class="card-actions">
+                        <a href="cabinet/cabinet-login.html" class="btn-primary card-enroll-btn">Записатися</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="carousel-card">
+                <div class="card-image">
+                    <img src="photo/trx.jpg" alt="TRX" loading="lazy" width="640" height="416" />
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">TRX</h3>
+                    <p class="card-text">
+                        Функціональний фітнес із петлями для розвитку всіх груп м'язів та підтягнутого тіла.
+                    </p>
+                    <div class="card-actions">
+                        <a href="cabinet/cabinet-login.html" class="btn-primary card-enroll-btn">Записатися</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="carousel-card">
+                <div class="card-image card-image-blue">
+                    <img src="photo/functional.jpg" alt="Functional" loading="lazy" width="640" height="416" />
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Functional</h3>
+                    <p class="card-text">
+                        Розвиток сили та витривалості. Комплексна прокачка м'язів із додатковим інвентарем.
+                    </p>
+                    <div class="card-actions">
+                        <a href="cabinet/cabinet-login.html" class="btn-primary card-enroll-btn">Записатися</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="carousel-dots-wrapper" id="carousel-dots" role="tablist" aria-label="Слайди"></div>
+
+    </section>
+
+
+    <!-- ── Розклад ─────────────────────────────────────── -->
+    <section id="schedule" class="container schedule-section fade-in-up">
+        <div class="section-header">
+            <h2 class="section-title">Розклад</h2>
+        </div>
+
+        <div
+            class="schedule-tabs schedule-tabs-container"
+            role="tablist"
+            aria-label="Дні тижня"
+        >
+            <button type="button" role="tab" aria-selected="true" data-schedule-day="0" class="schedule-day-tab">Пн</button>
+            <button type="button" role="tab" aria-selected="false" data-schedule-day="1" class="schedule-day-tab">Вт</button>
+            <button type="button" role="tab" aria-selected="false" data-schedule-day="2" class="schedule-day-tab">Ср</button>
+            <button type="button" role="tab" aria-selected="false" data-schedule-day="3" class="schedule-day-tab">Чт</button>
+            <button type="button" role="tab" aria-selected="false" data-schedule-day="4" class="schedule-day-tab">Пт</button>
+            <button type="button" role="tab" aria-selected="false" data-schedule-day="5" class="schedule-day-tab">Сб</button>
+            <button type="button" role="tab" aria-selected="false" data-schedule-day="6" class="schedule-day-tab">Нд</button>
+        </div>
+
+        <div class="schedule-list" role="list" aria-label="Заняття"></div>
+    </section>
+
+
+    <!-- ── Тренери ─────────────────────────────────────── -->
+    <section id="trainers" class="container trainers-section fade-in-up">
+        <div class="section-header">
+            <h2 class="section-title">Наші тренери</h2>
+        </div>
+
+        <div class="trainers-grid">
+
+            <article class="trainer-card">
+                <div class="trainer-card-inner">
+                    <img
+                        src="photo/trainer1.jpg"
+                        alt="Надія Мельник"
+                        loading="lazy"
+                        width="420"
+                        height="512"
+                    />
+                </div>
+                <div class="trainer-overlay" aria-hidden="true"></div>
+                <div class="trainer-info">
+                    <h3 class="trainer-card-name">Надія Мельник</h3>
+                    <p class="trainer-card-specialty">Спокійні практики (Йога, Пілатес)</p>
+                </div>
+            </article>
+
+            <article class="trainer-card trainer-card-warm">
+                <div class="trainer-card-inner">
+                    <img
+                        src="photo/trainer2.jpg"
+                        alt="Тетяна Ткаченко"
+                        loading="lazy"
+                        width="420"
+                        height="512"
+                    />
+                </div>
+                <div class="trainer-overlay" aria-hidden="true"></div>
+                <div class="trainer-info">
+                    <h3 class="trainer-card-name">Тетяна Ткаченко</h3>
+                    <p class="trainer-card-specialty">Відповідає за силовий блок (TRX, Functional)</p>
+                </div>
+            </article>
+
+            <article class="trainer-card">
+                <div class="trainer-card-inner">
+                    <img
+                        src="photo/trainer3.jpg"
+                        alt="Софія Коваленко"
+                        loading="lazy"
+                        width="420"
+                        height="512"
+                    />
+                </div>
+                <div class="trainer-overlay" aria-hidden="true"></div>
+                <div class="trainer-info">
+                    <h3 class="trainer-card-name">Софія Коваленко</h3>
+                    <p class="trainer-card-specialty">Легкість рухів та гнучкість (Stretching, Barre)</p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <section id="pricing" class="container pricing-section fade-in-up">
+
+        <div class="section-header-row">
+            <div>
+                <h2 class="section-title">Абонементи</h2>
+            </div>
+            <div class="carousel-controls">
+                <button
+                    id="pricing-carousel-prev"
+                    aria-label="Попередній тариф"
+                    class="carousel-btn carousel-btn-prev"
+                >
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <button
+                    id="pricing-carousel-next"
+                    aria-label="Наступний тариф"
+                    class="carousel-btn carousel-btn-next"
+                >
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="carousel-track" id="pricing-carousel-track">
+
+            <article class="pricing-carousel-card">
+                <div class="pricing-card-header hdr-coral">
+                    <p>Для тих, хто віддає перевагу гнучкому графіку без зобов'язань</p>
+                </div>
+                <div class="pricing-card-body">
+                    <h3 class="pricing-card-title">Разове заняття</h3>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-coral" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Вільний вибір напрямку</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-coral" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Термін дії 1 день</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-coral" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Форма оплати: картка/готівка в студії</span>
+                        </li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p class="pricing-price">300 ₴ <span class="pricing-price-unit">/ заняття</span></p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="pricing-carousel-card">
+                <div class="pricing-card-header hdr-blue">
+                    <p>Для легкого старту та знайомства зі студією</p>
+                </div>
+                <div class="pricing-card-body">
+                    <h3 class="pricing-card-title">4 тренування</h3>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-blue" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Вільний вибір напрямку</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-blue" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Термін дії 30 днів</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-blue" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Форма оплати: картка/готівка в студії</span>
+                        </li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p class="pricing-price">800 ₴</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="pricing-carousel-card">
+                <div class="pricing-card-header hdr-light">
+                    <p>Оптимальний вибір для регулярних занять двічі на тиждень</p>
+                </div>
+                <div class="pricing-card-body">
+                    <h3 class="pricing-card-title">8 тренувань</h3>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-lightblue" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Вільний вибір напрямку</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-lightblue" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Термін дії 30 днів</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-lightblue" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Форма оплати: картка/готівка в студії</span>
+                        </li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p class="pricing-price">1 600 ₴</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="pricing-carousel-card">
+                <div class="pricing-card-header hdr-blue">
+                    <p>Для досягнення стабільних результатів та покращення форми</p>
+                </div>
+                <div class="pricing-card-body">
+                    <h3 class="pricing-card-title">10 тренувань</h3>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-blue" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Вільний вибір напрямку</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-blue" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Термін дії 30 днів</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-blue" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Форма оплати: картка/готівка в студії</span>
+                        </li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p class="pricing-price">1 800 ₴</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="pricing-carousel-card">
+                <div class="pricing-card-header hdr-coral">
+                    <p>Максимальна вигода для тих, хто тренується постійно</p>
+                </div>
+                <div class="pricing-card-body">
+                    <h3 class="pricing-card-title">12 тренувань</h3>
+                    <ul class="pricing-features">
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-coral" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Вільний вибір напрямку</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-coral" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Термін дії 30 днів</span>
+                        </li>
+                        <li class="pricing-feature">
+                            <span class="pricing-check check-coral" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+                            </span>
+                            <span class="pricing-check-text">Форма оплати: картка/готівка в студії</span>
+                        </li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p class="pricing-price">2 200 ₴</p>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="carousel-dots-wrapper" id="pricing-carousel-dots" role="tablist" aria-label="Тарифи"></div>
+
+    </section>
+
+
+    <section id="atmosphere" class="container atmosphere-section fade-in-up">
+        <div class="section-header">
+            <h2 class="section-title">Атмосфера студії</h2>
+        </div>
+
+        <div class="atmosphere-layout">
+            <div class="atmosphere-left">
+                <div class="atm-row-a">
+                    <div class="atm-photo atm-bg-blue">
+                        <img src="photo/studio12.jpg" alt="Атмосфера студії Harmony fit" loading="lazy" width="720" height="480" />
+                    </div>
+                    <div class="atm-photo atm-bg-coral">
+                        <img src="photo/studio1.jpg" alt="Зал Harmony fit" loading="lazy" width="520" height="480" />
+                    </div>
+                </div>
+                <div class="atm-row-b">
+                    <div class="atm-photo atm-bg-light">
+                        <img src="photo/studio5.jpg" alt="Тренувальна зона Harmony fit" loading="lazy" width="520" height="480" />
+                    </div>
+                    <div class="atm-photo atm-bg-blue">
+                        <img src="photo/studio11.jpg" alt="Інтер'єр студії Harmony fit" loading="lazy" width="720" height="480" />
+                    </div>
+                </div>
+            </div>
+            <div class="atmosphere-side">
+                <img src="photo/studio10.jpg" alt="Студія Harmony fit" loading="lazy" width="480" height="720" />
+            </div>
+        </div>
+    </section>
+
+
+    <section id="reviews" class="container reviews-section fade-in-up">
+        <div class="section-header">
+            <h2 class="section-title">Відгуки</h2>
+        </div>
+
+        <div class="reviews-grid">
+
+            <article class="review-card">
+                <h3 class="review-name">Наталія Калугіна</h3>
+                <p class="review-text">
+                    Професійні тренери, затишна атмосфера та енергія, з якою хочеться повертатися знову.
+                </p>
+                <div class="review-rating">
+                    <svg class="review-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span class="review-score">5.0</span>
+                </div>
+            </article>
+
+            <article class="review-card">
+                <h3 class="review-name">Юлія Макаревич</h3>
+                <p class="review-text">
+                    Завжди чисто, адміністратори уважні, а тренери підлаштовують навантаження під ваш рівень.
+                </p>
+                <div class="review-rating">
+                    <svg class="review-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span class="review-score">5.0</span>
+                </div>
+            </article>
+
+            <article class="review-card">
+                <h3 class="review-name">Світлана Попова</h3>
+                <p class="review-text">
+                    Багато напрямків на вибір, стильний зал, сучасне обладнання та зручний розклад занять.
+                </p>
+                <div class="review-rating">
+                    <svg class="review-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span class="review-score">5.0</span>
+                </div>
+            </article>
+
+            <article class="review-card">
+                <h3 class="review-name">Тетяна Костенко</h3>
+                <p class="review-text">
+                    Приємна атмосфера та професійний підхід — особливо рекомендую тренування TRX.
+                </p>
+                <div class="review-rating">
+                    <svg class="review-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span class="review-score">5.0</span>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <footer id="contacts" class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-inner">
+
+                <div class="footer-left">
+                    <nav class="footer-nav" aria-label="Навігація в підвалі">
+                        <a href="#services">Напрямки</a>
+                        <a href="#schedule">Розклад</a>
+                        <a href="#trainers">Тренери</a>
+                        <a href="#pricing">Тарифи</a>
+                        <a href="#reviews">Відгуки</a>
+                    </nav>
+                    <p class="footer-copyright">© 2026. Усі права захищені.</p>
+                </div>
+
+                <div class="footer-center">
+                    <h2 class="footer-heading">Контакти:</h2>
+                    <ul class="footer-contact">
+                        <li>
+                            <a href="tel:+380000000000">
+                                <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                                +380 XX XXX XX XX
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://maps.google.com/?q=м.+Суми,+вул.+Харківська,+1" target="_blank" rel="noopener noreferrer">
+                                <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                м. Суми, вул. Харківська, 1
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <nav class="footer-legal footer-legal-col" aria-label="Юридичні документи">
+                    <a href="#">Політика конфіденційності</a>
+                    <a href="#">Правила повернення грошових коштів</a>
+                    <a href="#">Договір публічної оферти</a>
+                </nav>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ── Скрипти ─────────────────────────────────────── -->
+    <script>
+        /* ── Поява блоків при скролі ─────────────────── */
+        const fadeObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.08, rootMargin: '0px 0px -50px 0px' }
+        );
+
+        document.querySelectorAll('.fade-in-up').forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                el.classList.add('visible');
+            } else {
+                fadeObserver.observe(el);
+            }
+        });
+
+        /* ── Мобільне меню ───────────────────────────── */
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileBackdrop = document.getElementById('mobile-nav-backdrop');
+
+        function closeMobileNav() {
+            mobileNav?.classList.add('hidden');
+            mobileBackdrop?.classList.add('hidden');
+            mobileBackdrop?.setAttribute('aria-hidden', 'true');
+            mobileBtn?.setAttribute('aria-expanded', 'false');
+            mobileBtn?.setAttribute('aria-label', 'Відкрити меню');
+            mobileBtn?.classList.remove('is-open');
+            document.body.classList.remove('mobile-menu-open');
+        }
+
+        function openMobileNav() {
+            mobileNav?.classList.remove('hidden');
+            mobileBackdrop?.classList.remove('hidden');
+            mobileBackdrop?.setAttribute('aria-hidden', 'false');
+            mobileBtn?.setAttribute('aria-expanded', 'true');
+            mobileBtn?.setAttribute('aria-label', 'Закрити меню');
+            mobileBtn?.classList.add('is-open');
+            document.body.classList.add('mobile-menu-open');
+        }
+
+        mobileBtn?.addEventListener('click', () => {
+            if (mobileNav?.classList.contains('hidden')) openMobileNav();
+            else closeMobileNav();
+        });
+
+        mobileBackdrop?.addEventListener('click', closeMobileNav);
+        mobileNav?.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', closeMobileNav);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) closeMobileNav();
+        });
+
+        /* ── Карусель ─────────────────────────────────── */
+        function initCarousel({ trackId, dotsId, prevId, nextId, cardSelector, slideLabel, visibleCards }) {
+            const track = document.getElementById(trackId);
+            const dotsEl = document.getElementById(dotsId);
+            const prevBtn = document.getElementById(prevId);
+            const nextBtn = document.getElementById(nextId);
+            if (!track || !dotsEl || !prevBtn || !nextBtn) return;
+
+            const cards = Array.from(track.querySelectorAll(cardSelector));
+            let activeIdx = 0;
+
+            const pageCount = visibleCards
+                ? Math.max(1, cards.length - visibleCards + 1)
+                : cards.length;
+
+            function maxIndex() {
+                return visibleCards ? cards.length - visibleCards : cards.length - 1;
+            }
+
+            for (let i = 0; i < pageCount; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.style.width = i === 0 ? '20px' : '6px';
+                dot.setAttribute('role', 'tab');
+                dot.setAttribute('aria-label', `${slideLabel} ${i + 1}`);
+                dot.addEventListener('click', () => goTo(i));
+                dotsEl.appendChild(dot);
+            }
+
+            function getDots() { return Array.from(dotsEl.querySelectorAll('.carousel-dot')); }
+
+            function cardWidth() {
+                return cards[0] ? cards[0].offsetWidth + 24 : 0;
+            }
+
+            function setDots(index) {
+                getDots().forEach((dot, i) => {
+                    const isActive = i === index;
+                    dot.classList.toggle('active', isActive);
+                    dot.style.width = isActive ? '20px' : '6px';
+                });
+            }
+
+            function goTo(index) {
+                activeIdx = Math.max(0, Math.min(index, maxIndex()));
+                track.scrollTo({ left: activeIdx * cardWidth(), behavior: 'smooth' });
+                setDots(activeIdx);
+            }
+
+            prevBtn.addEventListener('click', () => goTo(activeIdx - 1));
+            nextBtn.addEventListener('click', () => goTo(activeIdx + 1));
+
+            let scrollTimer;
+            track.addEventListener('scroll', () => {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    const idx = Math.max(0, Math.min(Math.round(track.scrollLeft / cardWidth()), maxIndex()));
+                    if (idx !== activeIdx) {
+                        activeIdx = idx;
+                        setDots(activeIdx);
+                    }
+                }, 80);
+            });
+        }
+
+        initCarousel({
+            trackId: 'carousel-track',
+            dotsId: 'carousel-dots',
+            prevId: 'carousel-prev',
+            nextId: 'carousel-next',
+            cardSelector: '.carousel-card',
+            slideLabel: 'Слайд',
+            visibleCards: 3,
+        });
+
+        initCarousel({
+            trackId: 'pricing-carousel-track',
+            dotsId: 'pricing-carousel-dots',
+            prevId: 'pricing-carousel-prev',
+            nextId: 'pricing-carousel-next',
+            cardSelector: '.pricing-carousel-card',
+            slideLabel: 'Тариф',
+            visibleCards: 3,
+        });
+
+    </script>
+    <script type="module" src="js/landing.js"></script>
+
+</body>
+</html>

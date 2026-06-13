@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../icons/favicon-landing.svg" type="image/svg+xml">
+    <title>Авторизація — Harmony fit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/pages/cabinet-login.css">
+</head>
+<body>
+
+    <header class="glass-nav site-header">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                Harmony <span class="nav-logo-accent">fit</span>
+            </a>
+            <a href="../index.html" class="btn-auth nav-back-link">
+                На головну
+            </a>
+        </div>
+    </header>
+
+    <main class="auth-main">
+        <div class="auth-panel">
+            <div class="auth-card">
+
+                <div class="auth-card-header">
+                    <h1 id="authTitle" class="auth-card-title">Вхід</h1>
+                    <p id="authSubtitle" class="auth-card-subtitle">
+                        Увійдіть, якщо ви вже реєструвалися раніше. Перший раз? Натисніть «Зареєструватися» нижче.
+                    </p>
+                    <p id="authError" class="auth-form-error hidden" role="alert"></p>
+                </div>
+
+                <!-- ── Форма входу ─────────────────────────────── -->
+                <form id="loginForm" class="auth-form" novalidate>
+                    <div class="field-group">
+                        <label for="login-email" class="field-label">Email</label>
+                        <input
+                            id="login-email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            class="auth-field"
+                            placeholder="you@example.com"
+                            aria-describedby="login-email-error"
+                        />
+                        <p id="login-email-error" class="field-error" role="alert"></p>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="login-password" class="field-label">Пароль</label>
+                        <div class="password-wrap">
+                            <input
+                                id="login-password"
+                                name="password"
+                                type="password"
+                                autocomplete="current-password"
+                                class="auth-field"
+                                placeholder="Введіть пароль"
+                                aria-describedby="login-password-error"
+                            />
+                            <button type="button" class="password-toggle" data-password-toggle="login-password" aria-label="Показати пароль">
+                                <i data-lucide="eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <p id="login-password-error" class="field-error" role="alert"></p>
+                    </div>
+
+                    <div class="submit-wrap">
+                        <button type="submit" class="btn-primary submit-btn">
+                            Увійти
+                        </button>
+                    </div>
+
+                    <p class="auth-switch-text">
+                        Ще немає акаунту для входу?
+                        <button type="button" id="showRegister" class="auth-switch-link">Зареєструватися</button>
+                    </p>
+                </form>
+
+                <!-- ── Форма реєстрації ────────────────────────── -->
+                <form id="registerForm" class="auth-form hidden" novalidate>
+                    <div class="auth-form-name-grid">
+                        <div class="field-group">
+                            <label for="register-first-name" class="field-label">Ім'я</label>
+                            <input
+                                id="register-first-name"
+                                name="firstName"
+                                type="text"
+                                autocomplete="given-name"
+                                class="auth-field"
+                                placeholder="Введіть ім'я"
+                                aria-describedby="register-first-name-error"
+                            />
+                            <p id="register-first-name-error" class="field-error" role="alert"></p>
+                        </div>
+                        <div class="field-group">
+                            <label for="register-last-name" class="field-label">Прізвище</label>
+                            <input
+                                id="register-last-name"
+                                name="lastName"
+                                type="text"
+                                autocomplete="family-name"
+                                class="auth-field"
+                                placeholder="Введіть прізвище"
+                                aria-describedby="register-last-name-error"
+                            />
+                            <p id="register-last-name-error" class="field-error" role="alert"></p>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="register-email" class="field-label">Email <span class="field-required">*</span></label>
+                        <input
+                            id="register-email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            class="auth-field"
+                            placeholder="you@example.com"
+                            aria-describedby="register-email-error"
+                            required
+                        />
+                        <p id="register-email-error" class="field-error" role="alert"></p>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="register-phone" class="field-label">Номер телефону <span class="field-required">*</span></label>
+                        <input
+                            id="register-phone"
+                            name="phone"
+                            type="tel"
+                            autocomplete="tel"
+                            inputmode="numeric"
+                            class="auth-field"
+                            placeholder="+380 XX XXX XX XX"
+                            aria-describedby="register-phone-error"
+                            required
+                        />
+                        <p id="register-phone-error" class="field-error" role="alert"></p>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="register-password" class="field-label">Пароль</label>
+                        <div class="password-wrap">
+                            <input
+                                id="register-password"
+                                name="password"
+                                type="password"
+                                autocomplete="new-password"
+                                class="auth-field"
+                                placeholder="Мінімум 8 символів"
+                                aria-describedby="register-password-error"
+                            />
+                            <button type="button" class="password-toggle" data-password-toggle="register-password" aria-label="Показати пароль">
+                                <i data-lucide="eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <p id="register-password-error" class="field-error" role="alert"></p>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="register-password-repeat" class="field-label">Повторіть пароль</label>
+                        <div class="password-wrap">
+                            <input
+                                id="register-password-repeat"
+                                name="passwordRepeat"
+                                type="password"
+                                autocomplete="new-password"
+                                class="auth-field"
+                                placeholder="Повторіть пароль"
+                                aria-describedby="register-password-repeat-error"
+                            />
+                            <button type="button" class="password-toggle" data-password-toggle="register-password-repeat" aria-label="Показати пароль">
+                                <i data-lucide="eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <p id="register-password-repeat-error" class="field-error" role="alert"></p>
+                    </div>
+
+                    <div class="submit-wrap">
+                        <button type="submit" class="btn-primary submit-btn">
+                            Зареєструватися
+                        </button>
+                    </div>
+
+                    <p class="auth-switch-text">
+                        Вже є акаунт?
+                        <button type="button" id="showLogin" class="auth-switch-link">Увійти</button>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
+    <script type="module" src="../js/cabinet-login.js"></script>
+</body>
+</html>

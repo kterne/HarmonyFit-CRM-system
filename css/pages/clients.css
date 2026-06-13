@@ -1,0 +1,456 @@
+/* ================================================
+   HarmonyFit CRM — сторінка клієнтів і тренерів
+   ================================================ */
+
+.modal-person {
+  max-width: 480px;
+}
+
+/* ── Панель інструментів таблиці ──────────────── */
+.table-toolbar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.filter-select-sm {
+  min-width: 160px;
+}
+
+.direction-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.td-notes {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Модалка картки клієнта ───────────────────── */
+.modal-client-card {
+  max-width: 920px;
+  width: calc(100vw - 32px);
+  height: min(720px, calc(100vh - 40px));
+  max-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-client-card > .modal-footer {
+  flex-shrink: 0;
+}
+
+.client-card-header {
+  flex-shrink: 0;
+}
+
+.client-card-identity {
+  min-width: 0;
+}
+
+.client-card-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.client-card-title-wrap .modal-title {
+  margin: 0;
+  min-width: 0;
+}
+
+#clientCardSubBadge {
+  flex-shrink: 0;
+}
+
+.client-card-body {
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.client-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(0, 1fr);
+  gap: 24px;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  align-items: stretch;
+}
+
+.client-card-grid > .client-card-panel {
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .modal-client-card {
+    height: auto;
+    max-height: calc(100vh - 24px);
+  }
+
+  .client-card-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+    flex: none;
+    overflow: visible;
+  }
+
+  .client-card-grid > .client-card-panel {
+    overflow: visible;
+  }
+
+  .client-card-right-stack {
+    height: auto;
+  }
+
+  .visit-history-scroll,
+  .sub-history-scroll {
+    max-height: min(240px, 32vh);
+  }
+}
+
+.client-card-panel {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#clientCardForm .form-group--notes {
+  margin-bottom: 0;
+}
+
+#clientCardForm .form-group--notes textarea {
+  min-height: 56px;
+  max-height: 72px;
+  resize: vertical;
+}
+
+/* ── Ліва колонка: контакти + відвідування ───── */
+.client-card-panel--left {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 14px;
+}
+
+.client-card-left-top {
+  flex-shrink: 0;
+}
+
+.client-card-left-visits {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.client-card-left-visits .client-card-section-title {
+  flex-shrink: 0;
+}
+
+.client-card-right-stack {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.client-card-right-block {
+  flex-shrink: 0;
+}
+
+/* ── Права колонка: абонемент + історія абонементів ─ */
+.client-card-right-block--sub-history {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.client-card-right-block--sub-history .client-card-section-title {
+  flex-shrink: 0;
+}
+
+.client-card-section-title {
+  margin: 0 0 12px;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: .02em;
+  flex-shrink: 0;
+}
+
+.client-new-sub-block {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.modal-assign-sub {
+  max-width: 420px;
+}
+
+.assign-sub-client-name {
+  margin: 0 0 14px;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.assign-sub-preview {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  background: var(--bg-body);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.assign-sub-warning {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  background: #FFF8E6;
+  border: 1px solid #FDE68A;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  color: #92400E;
+  line-height: 1.45;
+}
+
+.assign-sub-warning--modal {
+  margin: 0 0 14px;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.sub-history-scroll {
+  flex: 0 1 auto;
+  max-height: 320px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 8px 12px 10px;
+  background: var(--bg-body);
+  box-sizing: border-box;
+}
+
+.sub-history-row {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sub-history-row:last-child {
+  border-bottom: none;
+}
+
+.sub-history-row__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.sub-history-row__name {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sub-history-row__meta {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.assign-sub-label {
+  margin: 0 0 10px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.visit-history-scroll {
+  flex: 0 1 auto;
+  max-height: 320px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 8px 14px 10px;
+  background: var(--bg-body);
+  box-sizing: border-box;
+}
+
+.visit-history-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  padding: 20px 0;
+  margin: 0;
+}
+
+/* ── Підсумок абонемента в картці клієнта ─────── */
+.client-sub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.client-sub-actions .btn {
+  padding: 5px 12px;
+  font-size: var(--font-size-xs);
+  line-height: 1.4;
+}
+
+.btn-sub-remove {
+  color: #DC2626;
+  border-color: #FECACA;
+  background: #FEF2F2;
+}
+
+.btn-sub-remove:hover {
+  background: #FEE2E2;
+  border-color: #FCA5A5;
+  color: #B91C1C;
+}
+
+.client-sub-block {
+  background: var(--bg-body);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+
+.sub-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+}
+
+.sub-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sub-summary-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.sub-summary-value {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ── Рядок історії відвідувань ────────────────── */
+.visit-history-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.visit-row {
+  display: grid;
+  grid-template-columns: minmax(72px, 1fr) minmax(132px, 152px) minmax(96px, 112px) 32px;
+  align-items: center;
+  column-gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: var(--font-size-sm);
+}
+
+.visit-row:last-child {
+  border-bottom: none;
+}
+
+.visit-row--header {
+  padding-top: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.visit-direction {
+  font-weight: 500;
+  color: var(--text-primary);
+  min-width: 0;
+}
+
+.visit-date {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.visit-status {
+  justify-self: start;
+}
+
+.visit-row-action {
+  display: flex;
+  justify-content: center;
+  width: 32px;
+}
+
+/* ── Чекбокси напрямків у формі тренера ───────── */
+.direction-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+  user-select: none;
+}
+
+.direction-checkbox-item input[type="checkbox"] {
+  display: none;
+}
+
+.direction-checkbox-item.checked {
+  border-color: var(--color-brand);
+  background: var(--color-brand-light);
+  color: var(--color-brand);
+}
+
